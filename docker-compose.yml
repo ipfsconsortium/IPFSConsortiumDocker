@@ -1,0 +1,20 @@
+version: '3.4'
+
+volumes:
+  ipfs_data: {}
+  
+services:
+  ipfsconsortium:
+    image: eduadiez/ipfsconsortium
+    volumes:
+      - ipfs_data:/data/ipfs
+    environment:
+      - IPFS_ENABLE=true
+      - WEB3HOSTWS=wss://mainnet.infura.io/ws
+      - CONTRACTADDRESS=0x7433c7c768be4025ab791fb7b2942c3d9e309f3e
+      - STARTBLOCK=4090116
+    ports:
+      - 4001:4001
+      - 4002:4002/udp
+      - "127.0.0.1:5001:5001"
+      - "127.0.0.1:8080:8080"
